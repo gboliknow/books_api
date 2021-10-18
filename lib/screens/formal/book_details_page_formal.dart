@@ -1,3 +1,4 @@
+import 'package:books/res/custom_colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -176,7 +177,7 @@ class IconButtonText extends StatelessWidget {
 
   bool selected = false;
 
-  final Color selectedColor = new Color(0xff283593);
+  final Color selectedColor = CustomColors.firebaseYellow;
 
   @override
   Widget build(BuildContext context) {

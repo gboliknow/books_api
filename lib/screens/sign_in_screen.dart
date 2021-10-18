@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:books/res/custom_colors.dart';
 import 'package:books/widgets/sign_in_form.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -46,67 +47,56 @@ class _SignInScreenState extends State<SignInScreen> {
               right: 16.0,
               bottom: 20.0,
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Row(),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: RotatedBox(
-                          quarterTurns: 3,
-                          child: Image.asset(
-                            'assets/firebase_logo.png',
-                            height: 160,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        'The Book',
-                        style: TextStyle(
-                          color: CustomColors.firebaseYellow,
-                          fontSize: 40,
-                        ),
-                      ),
-                      Text(
-                        'Finder',
-                        style: TextStyle(
-                          color: CustomColors.firebaseOrange,
-                          fontSize: 40,
-                        ),
-                      ),
-                    ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  RotatedBox(
+                    quarterTurns: 3,
+                    child: Image.asset(
+                      'assets/firebase_logo.png',
+                      height: 160.h,
+                    ),
                   ),
-                ),
-                FutureBuilder(
-                  future: _initializeFirebase(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasError) {
-                      return Text('Error initializing Firebase');
-                    } else if (snapshot.connectionState ==
-                        ConnectionState.done) {
-                      return SignInForm(
-                        emailFocusNode: _emailFocusNode,
-                        passwordFocusNode: _passwordFocusNode,
+                  SizedBox(height: 20),
+                  Text(
+                    'The Book',
+                    style: TextStyle(
+                      color: CustomColors.firebaseYellow,
+                      fontSize: 40.r,
+                    ),
+                  ),
+                  Text(
+                    'Finder',
+                    style: TextStyle(
+                      color: CustomColors.firebaseOrange,
+                      fontSize: 40.r,
+                    ),
+                  ),
+                  FutureBuilder(
+                    future: _initializeFirebase(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Error initializing Firebase');
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.done) {
+                        return SignInForm(
+                          emailFocusNode: _emailFocusNode,
+                          passwordFocusNode: _passwordFocusNode,
+                        );
+                      }
+                      return CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          CustomColors.firebaseOrange,
+                        ),
                       );
-                    }
-                    return CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        CustomColors.firebaseOrange,
-                      ),
-                    );
-                  },
-                )
-                // SignInForm(
-                //   emailFocusNode: _emailFocusNode,
-                //   passwordFocusNode: _passwordFocusNode,
-                // ),
-              ],
+                    },
+                  )
+                  // SignInForm(
+                  //   emailFocusNode: _emailFocusNode,
+                  //   passwordFocusNode: _passwordFocusNode,
+                  // ),
+                ],
+              ),
             ),
           ),
         ),
