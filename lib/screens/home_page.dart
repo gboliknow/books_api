@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage>
           books: books,
           //color: new Color(0xffFC96BC),
           color: new Color(0xffffffff),
-          title: "My Favorites",
+          title: "Favorites",
           loading: snapshot.data == null,
         );
       },

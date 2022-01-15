@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       designSize: Size(360, 690),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter_Books_Store',
+        title: 'Books_Store',
         theme: new ThemeData(
           primaryColor: new Color(0xFF0F2533),
         ),
@@ -29,3 +29,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+  

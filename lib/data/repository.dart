@@ -176,7 +176,7 @@ class Repository {
       title: jsonBook["volumeInfo"]["title"],
       url: jsonBook["volumeInfo"]["imageLinks"] != null
           ? jsonBook["volumeInfo"]["imageLinks"]["smallThumbnail"]
-          : "",
+          : "https://www.seekpng.com/png/full/20-200365_covered-clipart-book-cover-plain-book-cover-png.png",
       id: jsonBook["id"],
       //only first author
       author: author,
